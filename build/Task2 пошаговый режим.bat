@@ -1,0 +1,2 @@
+Set xOS=x86& If Defined PROCESSOR_ARCHITEW6432 (Set xOS=x64) Else If "%PROCESSOR_ARCHITECTURE%"=="AMD64" Set xOS=x64
+If %xOS%==x86 ("Task2 Windows 32-bit" stepbystep) Else ("Task2 Windows 64-bit" stepbystep)
