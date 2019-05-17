@@ -13,6 +13,7 @@
 #include <malloc.h>
 #include <time.h>
 #include <math.h>
+#include <string.h>
 
 #include "inputData.h"
 #include "de.h"

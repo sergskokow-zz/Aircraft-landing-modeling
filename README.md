@@ -38,4 +38,4 @@
 ![График траектории 3](/img/path3.png)
 ## Зависимости
 1. [cJSON](https://github.com/DaveGamble/cJSON).
-2. [Gnuplot](http://www.gnuplot.info/) - local version for Windows or installed version for GNU/Linux.
+2. [Gnuplot](http://www.gnuplot.info/).

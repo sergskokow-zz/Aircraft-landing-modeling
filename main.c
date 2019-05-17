@@ -16,11 +16,13 @@
 struct inputData input_data; // структура с исходными данными, прочитанными в файле Data.json
 
 int main(int argc, char* argv[]) {
-	int stepByStepMode;
-	if (argc > 1)
-		stepByStepMode = 1;
-	else
-		stepByStepMode = 0;
+	int stepByStepMode=0;
+	if(argc>1)
+		for(int i=1;i<argc;i++)
+			if (strcmp(argv[i],"-stepbystep")==0) {
+				stepByStepMode = 1;
+				break;
+			};
 	system("chcp 65001 > nul"); // кодировка UTF-8 в консоли (Windows)
 	time_t start = clock();
 	int e;
@@ -146,8 +148,13 @@ int main(int argc, char* argv[]) {
 			((double) (clock() - start)) / (double) CLOCKS_PER_SEC);
 
 	/* Выполнение файла с командами в gnuplot'е */
-	system("gnuplot\\bin\\gnuplot -persist commands.txt"); //Windows
-	/* system("gnuplot -persist commands.txt"); //GNU/Linux */
+	if(argc>1)
+		for(int i=1;i<argc;i++)
+			if (strcmp(argv[i],"-local")==0) {
+				system("gnuplot\\bin\\gnuplot -persist commands.txt");
+				return 0;
+			};
+	system("gnuplot -persist commands.txt");
 	return 0;
 }
 
@@ -211,7 +218,7 @@ void computeAngles(int angleCount, double angle[angleCount], double *H,
 int getHeightIndex(double *H, int count, double target) {
 	int index = 0;
 	for (int i = 0; i < count; ++i)
-		if (abs(H[i] - target) <= abs(H[index] - target))
+		if (fabs(H[i] - target) <= fabs(H[index] - target))
 			index = i;
 	return index;
 }

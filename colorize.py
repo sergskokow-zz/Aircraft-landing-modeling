@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# Используем Pygments, чтобы раскрасить код
 from pygments.lexers import CLexer
 from pygments.formatters import HtmlFormatter
 from pygments import highlight
